@@ -14,7 +14,12 @@ const TeamForm = props => {
   };
   const submitForm = e => {
     e.preventDefault();
-    props.addNewTeamMember();
+    const newTeamMember = {
+      // creates new object for team.
+      ...teamMember
+    };
+
+    props.addNewTeamMember(newTeamMember);
     setTeamMember({ name: '', email: '', role: '' });
   };
 
@@ -22,24 +27,27 @@ const TeamForm = props => {
     
     <form onSubmit={submitForm}>
       <h1>Team Form</h1>
-      <label for="title">Name</label>
+      <label for="name">Name</label>
       <input
+        id="name"
         type="text"
         name="name"
         placeholder="Please enter your name"
         onChange={handleChanges}
         value={teamMember.name}
       />
-      <label htmlFor="note">Email</label>
+      <label htmlFor="email">Email</label>
       <input
+        id="email"
         type="email"
         name="email"
         placeholder="Enter email here"
         onChange={handleChanges}
         value={teamMember.email}
       />
-      <label htmlFor="note">Role</label>
+      <label htmlFor="role">Role</label>
       <input
+        id="role"
         type="text"
         name="role"
         placeholder="Enter your role here"
