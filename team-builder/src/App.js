@@ -1,27 +1,21 @@
 import React, {useState} from 'react';
-import ListForm from "./Components/ListForm";
-import List from "./Components/List";
+import TeamForm from './Components/TeamForm';
+import Team from './Components/Team';
+import data from './Components/data';
 
 import './App.css';
 
 function App() {
 
-  const [list, setList] = useState ({});
+  const [teamMember, setTeamMember] = useState (data);
 
-  const addNewList = list => {
-    const newList = {
-      id: Date.now(),
-      name: list.name,
-      email: list.email,
-      role: list.role
-    };
-    setList([...list, newList]);
+  const addNewTeamMember = newMember => {
+    setTeamMember([...teamMember, newMember]);
   };
   return (
     <div className="App">
-      <h1>My Notes</h1>
-      <ListForm addNewList={addNewList} />
-      <List list={list} />
+      <TeamForm addNewTeamMember={addNewTeamMember} />
+      <Team teamMember={teamMember} />
     </div>
   );
 }
